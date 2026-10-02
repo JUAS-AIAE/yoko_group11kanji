@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ヴィヴェール｜鉄板焼き・吉祥寺</title>
+<style>
+:root { --hue: 2; --bg: #fbf8f4; --fg: #2b2622; --muted: #6f665e; --card: #fff;
+  --line: #e7e0d8; --accent: hsl(var(--hue) 55% 38%); --accent-soft: hsl(var(--hue) 60% 94%); }
+@media (prefers-color-scheme: dark) { :root { --bg: #1c1916; --fg: #eee7df; --muted: #a99f95;
+  --card: #26221e; --line: #3a342e; --accent: hsl(var(--hue) 60% 68%); --accent-soft: hsl(var(--hue) 30% 20%); } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font-family: "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif; line-height: 1.7; }
+.notice { background: var(--accent-soft); color: var(--muted); font-size: 12px; text-align: center; padding: 6px 16px; }
+header { padding: 64px 16px 48px; text-align: center; border-bottom: 1px solid var(--line); }
+header .genre { color: var(--accent); letter-spacing: .2em; font-size: 13px; font-weight: 700; }
+header h1 { font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: clamp(32px, 8vw, 52px);
+  margin: 8px 0; font-weight: 600; }
+header p { color: var(--muted); margin: 0; }
+main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+section { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+h2 { font-size: 18px; margin: 0 0 16px; padding-left: 10px; border-left: 4px solid var(--accent); }
+.score { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.score div { background: var(--accent-soft); border-radius: 8px; padding: 12px; text-align: center; }
+.score b { display: block; font-size: 26px; color: var(--accent); }
+.score small { color: var(--muted); }
+.stars { color: #d89b2b; letter-spacing: 2px; } .dim { opacity: .35; }
+dl { display: grid; grid-template-columns: 9em 1fr; margin: 0; }
+dt, dd { padding: 10px 0; border-bottom: 1px solid var(--line); margin: 0; }
+dt { color: var(--muted); font-size: 14px; }
+@media (max-width: 520px) { dl { grid-template-columns: 1fr; } dt { border: 0; padding-bottom: 0; } }
+.tags span { display: inline-block; border: 1px solid var(--accent); color: var(--accent); border-radius: 999px;
+  padding: 2px 12px; margin: 0 6px 6px 0; font-size: 14px; }
+.tel { display: block; text-align: center; background: var(--accent); color: var(--bg); text-decoration: none;
+  font-size: 20px; font-weight: 700; padding: 14px; border-radius: 10px; }
+footer { text-align: center; color: var(--muted); font-size: 13px; padding: 24px 16px 40px; }
+footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="notice">※ このページは架空の店舗のダミーサイトです。実在の店舗・電話番号とは関係ありません。</div>
+<header>
+  <div class="genre">鉄板焼き</div>
+  <h1>ヴィヴェール</h1>
+  <p>吉祥寺｜吉祥寺駅から徒歩9分</p>
+</header>
+<main>
+  <section>
+    <h2>お店の評価</h2>
+    <div class="score">
+      <div><small>総合評価</small><b>3.9</b><span class="stars">★★★☆<span class=dim>☆</span></span></div>
+      <div><small>料理</small><b>3.6</b></div>
+      <div><small>雰囲気</small><b>4.4</b></div>
+      <div><small>サービス</small><b>3.6</b></div>
+    </div>
+    <p style="text-align:center;color:var(--muted);margin:12px 0 0">口コミ 590 件</p>
+  </section>
+  <section>
+    <h2>こんな方におすすめ</h2>
+    <div class="tags"><span>家族</span><span>宴会</span></div>
+    <p style="margin:12px 0 0">店内の雰囲気：和風・おしゃれ</p>
+  </section>
+  <section>
+    <h2>コース・プラン</h2>
+    <dl>
+      <dt>コース料理</dt><dd>全8品（前菜・刺身・焼物・煮物・主菜・ご飯・デザート）</dd>
+      <dt>飲み放題</dt><dd>あり（3時間）</dd>
+      <dt>ご予算</dt><dd>12,000～20,000円（目安 15900円 / お一人様）</dd>
+    </dl>
+  </section>
+  <section>
+    <h2>店舗情報</h2>
+    <dl>
+      <dt>店名</dt><dd>ヴィヴェール</dd>
+      <dt>ジャンル</dt><dd>鉄板焼き</dd>
+      <dt>住所</dt><dd>東京都武蔵野市吉祥寺1-19-4 吉祥寺ビル 3F</dd>
+      <dt>アクセス</dt><dd>吉祥寺駅から徒歩9分</dd>
+      <dt>個室</dt><dd>個室あり（2～4名）</dd>
+      <dt>収容人数</dt><dd>150名</dd>
+      <dt>アレルギー対応</dt><dd>一部品目のみ対応可</dd>
+      <dt>喫煙</dt><dd>喫煙席あり</dd>
+    </dl>
+  </section>
+  <section>
+    <h2>ご予約・お問い合わせ</h2>
+    <a class="tel" href="tel:03-8658-9746">☎ 03-8658-9746</a>
+  </section>
+</main>
+<footer>&copy; ヴィヴェール　<a href="./">店舗一覧へ</a></footer>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ナレッジ化プロジェクト｜業務の属人化をAIで解消する3つの取り組み</title>
+<meta name="description" content="ベテラン社員に属人化した業務を、AIでナレッジ化して組織の資産に変える3つの取り組み（Step1：ナレッジ化チェックAI / Step2：集合知化アプリ / Step3：見積チェックアプリ）を紹介します。">
+<style>
+:root {
+  --ink: #16242e;
+  --muted: #5b6d78;
+  --bg: #eef3f6;
+  --card: #ffffff;
+  --line: #d6e1e8;
+  --brand: #22a06b;         /* 緑 */
+  --brand-2: #178a57;
+  --brand-soft: #e4f3ec;
+  --accent2: #f2b233;       /* 黄 */
+  --accent2-soft: #fdf3dd;
+  --dark: #142c22;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8f0ec;
+    --muted: #98a9a1;
+    --bg: #0f1512;
+    --card: #18201c;
+    --line: #263330;
+    --brand: #3fc887;
+    --brand-2: #2fb277;
+    --brand-soft: #12281e;
+    --accent2: #f4c052;
+    --accent2-soft: #2c2413;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif; line-height: 1.8;
+}
+a { color: var(--brand-2); }
+
+/* ---- Nav ---- */
+nav {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 18px;
+  padding: 12px 22px;
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+nav .brand { font-weight: 800; letter-spacing: .03em; color: var(--brand); white-space: nowrap; }
+nav .brand small { display: block; font-weight: 600; font-size: 11px; color: var(--muted); letter-spacing: .14em; }
+nav .links { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
+nav .links a {
+  color: var(--ink); text-decoration: none; font-size: 14px;
+  padding: 7px 12px; border-radius: 999px; transition: background .15s;
+}
+nav .links a:hover { background: var(--brand-soft); color: var(--brand); }
+
+/* ---- Hero ---- */
+.hero {
+  padding: 64px 20px 56px; text-align: center; color: #fff; position: relative; overflow: hidden;
+  background: linear-gradient(150deg, #142c22 0%, #1c4a34 55%, #22674a 100%);
+}
+.hero::before, .hero::after {
+  content: ""; position: absolute; border-radius: 50%; filter: blur(2px); opacity: .5;
+}
+.hero::before { width: 420px; height: 420px; right: -120px; top: -140px; background: radial-gradient(circle, #2fb277, transparent 70%); }
+.hero::after { width: 380px; height: 380px; left: -140px; bottom: -160px; background: radial-gradient(circle, #f4c052, transparent 70%); }
+.hero .inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; }
+.hero .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .3em; color: #bfe9d2; }
+.hero h1 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: clamp(30px, 6vw, 52px); margin: 16px 0 8px; line-height: 1.25; font-weight: 700;
+}
+.hero p { margin: 0; font-size: clamp(15px, 2.2vw, 18px); color: #e6f6ec; }
+.hero .route { margin-top: 26px; display: flex; gap: 10px; justify-content: center; align-items: stretch; flex-wrap: wrap; }
+.hero .route .node {
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28);
+  border-radius: 12px; padding: 10px 16px; font-size: 14px; min-width: 150px;
+}
+.hero .route .node b { display: block; color: #fff; font-size: 15px; }
+.hero .route .node small { color: #cfeadd; }
+.hero .route .arrow { align-self: center; color: #a7d8bd; font-size: 20px; font-weight: 800; }
+@media (max-width: 640px){ .hero .route .arrow { transform: rotate(90deg); } }
+.hero-cta { margin-top: 28px; }
+.hero-cta a {
+  display: inline-block; text-decoration: none; font-weight: 700; font-size: 15px;
+  padding: 13px 24px; border-radius: 999px; margin: 5px;
+}
+.hero-cta .primary { background: #fff; color: var(--brand-2); box-shadow: 0 10px 26px rgba(0,0,0,.25); }
+.hero-cta .ghost { color: #fff; border: 1.5px solid rgba(255,255,255,.75); }
+
+/* ---- Main ---- */
+main { max-width: 1020px; margin: 0 auto; padding: 44px 18px 80px; }
+section { margin-bottom: 64px; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; }
+.sec-head .num { font-size: 13px; font-weight: 800; color: var(--brand); letter-spacing: .22em; }
+.sec-head h2 { font-size: clamp(22px, 3.4vw, 30px); margin: 0;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  border-left: 5px solid var(--brand); padding-left: 14px; }
+.lead { color: var(--muted); max-width: 760px; }
+
+/* ---- Step block ---- */
+.step { display: grid; grid-template-columns: 1.05fr .95fr; gap: 26px; align-items: start; }
+@media (max-width: 780px){ .step { grid-template-columns: 1fr; } }
+.step .desc { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.step .desc .badge { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .12em;
+  padding: 4px 12px; border-radius: 999px; }
+.badge.green { background: var(--brand-soft); color: var(--brand-2); }
+.badge.yellow { background: var(--accent2-soft); color: #b0790a; }
+.step .desc h3 { font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: 22px; margin: 14px 0 4px; }
+.step .desc .en { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+.step .desc ul { margin: 0; padding-left: 18px; }
+.step .desc li { margin-bottom: 4px; }
+.step .desc .tags { margin-top: 14px; }
+.step .desc .tags span { display: inline-block; border: 1px solid var(--brand); color: var(--brand-2);
+  border-radius: 999px; padding: 2px 12px; margin: 0 6px 6px 0; font-size: 13px; }
+
+/* ---- Video player ---- */
+.video-card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.video-card .screen { background: #000; }
+.video-card video { display: block; width: 100%; aspect-ratio: 16/9; background: #000; }
+.video-card .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; flex-wrap: wrap; }
+.video-card .bar .lbl { font-weight: 700; color: var(--ink); }
+.video-card .bar .note { font-size: 12px; color: var(--muted); }
+.video-card .ctrls { display: flex; gap: 8px; }
+.video-card .ctrls button {
+  border: 1px solid var(--brand); color: var(--brand-2); background: var(--brand-soft);
+  font-weight: 700; font-size: 13px; padding: 6px 14px; border-radius: 999px; cursor: pointer;
+}
+.video-card .ctrls button:hover { background: var(--brand); color: #fff; }
+
+/* ---- Flow ribbon / stats ---- */
+.flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.flow .cell { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+.flow .cell b { display: block; color: var(--brand); font-size: 24px; }
+.flow .cell small { color: var(--muted); }
+
+/* ---- CTA band ---- */
+.cta-band { margin-top: 10px; padding: 40px 24px; text-align: center; color: #fff; border-radius: 20px;
+  background: linear-gradient(135deg, #142c22, #1c4a34 55%, #22674a); }
+.cta-band h2 { font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: clamp(22px,4vw,30px); margin: 0 0 10px; }
+.cta-band p { margin: 0 0 22px; opacity: .95; }
+
+footer { text-align: center; color: var(--muted); font-size: 13px; padding: 30px 16px 48px; }
+.disclaimer { font-size: 12px; color: var(--muted); max-width: 780px; margin: 16px auto 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">ナレッジ化プロジェクト<small>AIで業務の属人化を解消</small></div>
+  <div class="links">
+    <a href="#overview">取り組み全体</a>
+    <a href="#step1">Step1</a>
+    <a href="#step2">Step2</a>
+    <a href="#step3">Step3</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="inner">
+    <div class="eyebrow">知識を、ひとりから組織へ。</div>
+    <h1>ナレッジ化プロジェクト</h1>
+    <p>ベテラン社員に属人化した業務を、AIで「集合知」に変える3つの取り組み</p>
+    <div class="route">
+      <div class="node"><b>Step1</b><small>ナレッジ化チェックAI</small></div>
+      <div class="arrow">→</div>
+      <div class="node"><b>Step2</b><small>インタビュー→集合知化</small></div>
+      <div class="arrow">→</div>
+      <div class="node"><b>Step3</b><small>見積チェックアプリ</small></div>
+    </div>
+    <div class="hero-cta">
+      <a class="primary" href="#step1">▶ 紹介動画を見る</a>
+      <a class="ghost" href="#overview">取り組みの流れ</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Overview -->
+  <section id="overview">
+    <div class="sec-head"><span class="num">OVERVIEW</span><h2>取り組みの全体像</h2></div>
+    <p class="lead">日々の業務の中には、ベテラン社員にしかノウハウがなく、個人に溜まってしまう「属人化した業務」が少なくありません。本プロジェクトは、そのような業務をAIで「ナレッジ化」し、組織全体で使える資産へと変える3ステップの取り組みです。</p>
+    <div class="flow">
+      <div class="cell"><b>Step1</b><small>ナレッジ化すべき業務かをAIでチェック</small></div>
+      <div class="cell"><b>Step2</b><small>インタビューから業務スキルを集合知化</small></div>
+      <div class="cell"><b>Step3</b><small>見積チェックの属人化を解消するアプリ</small></div>
+    </div>
+  </section>
+
+  <!-- Step1 -->
+  <section id="step1">
+    <div class="sec-head"><span class="num">01</span><h2>Step1｜ナレッジ化チェックAI</h2></div>
+    <div class="step">
+      <div class="desc">
+        <span class="badge green">Step 1</span>
+        <h3>ナレッジ化すべき業務かを判定</h3>
+        <div class="en">Knowledge-worthy check by AI</div>
+        <ul>
+          <li>様々な業務の中から、<b>ベテラン社員に属人化</b>している業務を抽出</li>
+          <li>その業務が本当に<b>ナレッジ化すべき業務か</b>をAIがチェック</li>
+          <li>暗黙知の度合い・標準化のしやすさを客観的に評価</li>
+        </ul>
+        <div class="tags"><span>属人化の見える化</span><span>優先度判定</span><span>工数削減</span></div>
+      </div>
+      <div class="video-card" data-video="videos/step1.mp4">
+        <div class="screen"><video controls preload="metadata" playsinline>
+          <source src="videos/step1.mp4" type="video/mp4">
+          お使いのブラウザは動画再生に対応していません。
+        </video></div>
+        <div class="bar">
+          <span class="lbl">Step1｜ナレッジ化チェックAI</span>
+          <span class="note">ローカル動画（約11秒）</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step2 -->
+  <section id="step2">
+    <div class="sec-head"><span class="num">02</span><h2>Step2｜集合知化アプリ</h2></div>
+    <div class="step">
+      <div class="desc">
+        <span class="badge yellow">Step 2</span>
+        <h3>インタビューから業務スキルを集合知化</h3>
+        <div class="en">From interview to shared knowledge</div>
+        <ul>
+          <li><b>インタビューデータ</b>（質疑応答文書 or その録音）を入力</li>
+          <li>AIが要約し、ノウハウ・手順・判断基準を構造化</li>
+          <li>個人のスキルを<b>組織の集合知（ナレッジ）</b>として蓄積</li>
+        </ul>
+        <div class="tags"><span>文書・録音対応</span><span>自動要約</span><span>検索可能</span></div>
+      </div>
+      <div class="video-card" data-video="videos/step2.mp4">
+        <div class="screen"><video controls preload="metadata" playsinline>
+          <source src="videos/step2.mp4" type="video/mp4">
+          お使いのブラウザは動画再生に対応していません。
+        </video></div>
+        <div class="bar">
+          <span class="lbl">Step2｜集合知化アプリ</span>
+          <span class="note">ローカル動画（約11秒）</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step3 -->
+  <section id="step3">
+    <div class="sec-head"><span class="num">03</span><h2>Step3｜見積チェックアプリ</h2></div>
+    <div class="step">
+      <div class="desc">
+        <span class="badge green">Step 3</span>
+        <h3>見積書チェックの属人化を解消</h3>
+        <div class="en">Estimate-checking PoC</div>
+        <ul>
+          <li>サンプルとして<b>見積書作成ナレッジ</b>を活用</li>
+          <li><b>見積書チェック</b>の属人化を解消するアプリを試作</li>
+          <li>単価・数量・項目漏れ、過去パターンとの差分を検出</li>
+        </ul>
+        <div class="tags"><span>見積チェック</span><span>ノウハウ適用</span><span>PoC</span></div>
+      </div>
+      <div class="video-card" data-video="videos/step3.mp4">
+        <div class="screen"><video controls preload="metadata" playsinline>
+          <source src="videos/step3.mp4" type="video/mp4">
+          お使いのブラウザは動画再生に対応していません。
+        </video></div>
+        <div class="bar">
+          <span class="lbl">Step3｜見積チェックアプリ</span>
+          <span class="note">ローカル動画（約11秒）</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <h2>知識を、ひとりから組織へ。</h2>
+    <p>この仕組みは、見積チェック以外の業務にも広げられます。</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; ナレッジ化プロジェクト 紹介ページ</p>
+  <p class="disclaimer">※ 本ページは、AIによる業務ナレッジ化の取り組み（Step1〜3）を紹介するためのデモサイトです。動画は本プロジェクト用に生成したスライド解説動画（ローカルファイル）です。</p>
+</footer>
+
+<script>
+// 動画カードの再生/一時停止トグル（各動画に再生ボタンを付ける）
+document.querySelectorAll('.video-card').forEach(card => {
+  const video = card.querySelector('video');
+  const bar = card.querySelector('.bar');
+  const lbl = card.querySelector('.bar .lbl');
+  const btn = document.createElement('button');
+  btn.textContent = '▶ 再生';
+  btn.style.cssText = 'border:1px solid var(--brand);color:var(--brand-2);background:var(--brand-soft);font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;cursor:pointer;';
+  btn.addEventListener('click', () => {
+    if (video.paused) { video.play(); btn.textContent = '⏸ 一時停止'; }
+    else { video.pause(); btn.textContent = '▶ 再生'; }
+  });
+  video.addEventListener('play', () => btn.textContent = '⏸ 一時停止');
+  video.addEventListener('pause', () => btn.textContent = '▶ 再生');
+  const ctrls = document.createElement('div');
+  ctrls.className = 'ctrls';
+  ctrls.appendChild(btn);
+  bar.appendChild(ctrls);
+});
+</script>
+
+</body>
+</html>

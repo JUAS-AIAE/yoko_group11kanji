@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プラサ ヴェルデ｜沼津の総合コンベンション・MICE施設（紹介動画付き）</title>
+<meta name="description" content="静岡県沼津市にある総合コンベンション施設「プラサ ヴェルデ」（コンベンションぬまづ・キラメッセぬまづ）の紹介サイト。紹介動画・施設情報・アクセスをまとめてご案内します。">
+<style>
+:root {
+  --green: #1f7a4d;          /* Verde = 緑 */
+  --green-2: #2f9e68;
+  --green-soft: #e7f4ec;
+  --sky: #bcd8e8;
+  --ink: #1d2a24;
+  --muted: #5c6e64;
+  --bg: #f6f8f6;
+  --card: #ffffff;
+  --line: #dbe6e0;
+  --gold: #d8a02f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --green: #4fcf8a;
+    --green-2: #63d99b;
+    --green-soft: #14261c;
+    --sky: #2c3f4a;
+    --ink: #e9f2ec;
+    --muted: #9db5a8;
+    --bg: #121817;
+    --card: #1c2422;
+    --line: #2c3b34;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  line-height: 1.75;
+}
+a { color: var(--green-2); }
+
+/* ---------- Nav ---------- */
+nav {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 18px;
+  padding: 12px 22px;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+nav .brand { font-weight: 800; letter-spacing: .04em; color: var(--green); white-space: nowrap; }
+nav .brand small { display: block; font-weight: 600; font-size: 11px; color: var(--muted); letter-spacing: .14em; }
+nav .links { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
+nav .links a {
+  color: var(--ink); text-decoration: none; font-size: 14px;
+  padding: 7px 12px; border-radius: 999px; transition: background .15s;
+}
+nav .links a:hover { background: var(--green-soft); color: var(--green); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: 72px 20px 60px;
+  text-align: center;
+  overflow: hidden;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(31,122,77,.70), rgba(31,122,77,.30)),
+    linear-gradient(180deg, #6fb1cf, #dbe7ee);
+}
+.hero::after { /* 富士山シルエット */
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -2px; height: 150px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.18) 45%, rgba(255,255,255,.55) 55%, transparent 80%);
+  background-size: 100% 100%;
+  -webkit-mask: linear-gradient(120deg, transparent 30%, #000 50%, transparent 70%);
+          mask: linear-gradient(120deg, transparent 30%, #000 50%, transparent 70%);
+  opacity: .9; pointer-events: none;
+}
+.hero .eyebrow {
+  font-size: 13px; font-weight: 700; letter-spacing: .28em; color: #eafff2;
+  text-shadow: 0 1px 8px rgba(0,0,0,.2);
+}
+.hero h1 {
+  margin: 14px auto 6px; max-width: 900px;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: clamp(34px, 7vw, 62px); font-weight: 700; line-height: 1.2;
+  text-shadow: 0 2px 18px rgba(0,0,0,.25);
+}
+.hero .sub { font-size: clamp(15px, 2.2vw, 19px); margin: 0; color: #f0fbf4; text-shadow: 0 1px 8px rgba(0,0,0,.2); }
+.hero .badges { margin-top: 22px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.hero .badges span {
+  font-size: 13px; padding: 6px 14px; border-radius: 999px;
+  background: rgba(255,255,255,.22); border: 1px solid rgba(255,255,255,.4); backdrop-filter: blur(3px);
+}
+.hero-cta { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.hero-cta a {
+  text-decoration: none; font-weight: 700; font-size: 15px; padding: 12px 22px; border-radius: 999px;
+  transition: transform .15s, box-shadow .15s;
+}
+.hero-cta a:hover { transform: translateY(-2px); }
+.hero-cta .primary { background: #fff; color: var(--green); box-shadow: 0 8px 22px rgba(0,0,0,.18); }
+.hero-cta .ghost { color: #fff; border: 1.5px solid rgba(255,255,255,.75); background: rgba(255,255,255,.1); }
+
+/* ---------- Layout ---------- */
+main { max-width: 1020px; margin: 0 auto; padding: 40px 18px 80px; }
+section { margin-bottom: 56px; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; }
+.sec-head .num { font-size: 13px; font-weight: 800; color: var(--green); letter-spacing: .2em; }
+.sec-head h2 {
+  font-size: clamp(22px, 3.5vw, 30px); margin: 0;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  border-left: 5px solid var(--green); padding-left: 14px;
+}
+.lead { color: var(--muted); max-width: 720px; }
+
+/* ---------- Video ---------- */
+.video-feature { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.video-frame { position: relative; padding-top: 56.25%; background: #000; }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-caption { padding: 16px 20px; display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+.video-caption .tag { font-size: 11px; font-weight: 700; color: #fff; background: var(--green); padding: 3px 10px; border-radius: 999px; }
+.video-caption .t { font-weight: 700; }
+.video-caption .meta { color: var(--muted); font-size: 13px; width: 100%; }
+
+.grid-videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 20px; }
+.mini-video { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.mini-video iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; }
+.mini-video .c { padding: 12px 15px; font-size: 14px; font-weight: 600; }
+
+/* ---------- Stats ---------- */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 14px; text-align: center; }
+.stat b { display: block; font-size: 28px; color: var(--green); line-height: 1.2; }
+.stat small { color: var(--muted); }
+
+/* ---------- Facility cards ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.card h3 { margin: 0 0 4px; font-size: 18px; color: var(--green); }
+.card .cname { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.card ul { margin: 0; padding-left: 18px; }
+.card li { margin-bottom: 4px; }
+.card .kpi { display: inline-block; background: var(--green-soft); color: var(--green); font-weight: 800;
+  border-radius: 8px; padding: 3px 10px; margin: 2px 4px 0 0; font-size: 14px; }
+
+/* ---------- Access ---------- */
+.access { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; }
+@media (max-width: 720px){ .access { grid-template-columns: 1fr; } }
+.access .info { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.access dl { margin: 0; }
+.access dt { font-weight: 700; color: var(--green); margin-top: 14px; }
+.access dt:first-child { margin-top: 0; }
+.access dd { margin: 2px 0 0; color: var(--ink); }
+.access .map { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); min-height: 260px; }
+.access .map iframe { width: 100%; height: 100%; min-height: 300px; border: 0; display: block; }
+.map-embed { border: 0; width: 100%; height: 100%; min-height: 300px; display: block; }
+
+/* ---------- CTA band ---------- */
+.cta-band {
+  margin-top: 10px; padding: 40px 24px; text-align: center; border-radius: 18px; color: #fff;
+  background: linear-gradient(135deg, var(--green), #2f9e68 55%, #6fb1cf);
+}
+.cta-band h2 { font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: clamp(22px,4vw,30px); margin: 0 0 10px; }
+.cta-band p { margin: 0 0 22px; opacity: .95; }
+.cta-band .btn { display: inline-block; background: #fff; color: var(--green); font-weight: 800;
+  text-decoration: none; padding: 14px 30px; border-radius: 999px; margin: 5px; box-shadow: 0 10px 26px rgba(0,0,0,.18); }
+
+footer { text-align: center; color: var(--muted); font-size: 13px; padding: 30px 16px 48px; }
+footer .official { margin-bottom: 10px; }
+footer a { color: var(--green-2); }
+.disclaimer { font-size: 12px; color: var(--muted); max-width: 760px; margin: 20px auto 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">プラサ ヴェルデ<small>Plaza Verde / 沼津</small></div>
+  <div class="links">
+    <a href="#video">紹介動画</a>
+    <a href="#about">施設について</a>
+    <a href="#facility">施設紹介</a>
+    <a href="#access">アクセス</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">静岡県沼津市｜総合コンベンション・MICE施設</div>
+  <h1>プラサ ヴェルデ</h1>
+  <p class="sub">会議場・展示イベント施設・ホテルを備えた<br>「コンパクト・オールインワン」のコンベンション施設</p>
+  <div class="badges">
+    <span>コンベンションぬまづ</span>
+    <span>キラメッセぬまづ</span>
+    <span>JR沼津駅から徒歩3分</span>
+    <span>富士山を望む</span>
+  </div>
+  <div class="hero-cta">
+    <a class="primary" href="#video">▶ 紹介動画を見る</a>
+    <a class="ghost" href="#access">アクセス・詳細</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- Video -->
+  <section id="video">
+    <div class="sec-head"><span class="num">01</span><h2>紹介動画</h2></div>
+    <p class="lead">2014年のグランドオープンに際して制作された公式映像。千本松原をモチーフとした施設コンセプトと、富士山・駿河湾に囲まれた沼津の景観をご覧いただけます。</p>
+
+    <div class="video-feature">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/51SAcPPbDLw" title="Plaza Verde Grand Opening"
+          loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="video-caption">
+        <span class="tag">メイン</span>
+        <span class="t">Plaza Verde Grand Opening（グランドオープン記念映像）</span>
+        <span class="meta">しずおかメディアチャンネル（静岡県庁公式）</span>
+      </div>
+    </div>
+
+    <div class="grid-videos">
+      <div class="mini-video">
+        <iframe src="https://www.youtube.com/embed/chLfWwyQzMU" title="Around Plaza Verde（プラサヴェルデ周辺の魅力）"
+          loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="c">Around Plaza Verde ― 周辺の魅力</div>
+      </div>
+      <div class="mini-video">
+        <iframe src="https://www.youtube.com/embed/rFVUfpnTwAo" title="もっと！そこ知りNo01 プラサヴェルデ"
+          loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="c">もっと！そこ知り No.01 プラサヴェルデ</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="sec-head"><span class="num">02</span><h2>施設について</h2></div>
+    <p class="lead">プラサ ヴェルデは、会議・展示・宿泊が一体となった総合コンベンション施設として、平成26（2014）年に沼津駅北口にオープンしました。東京駅から新幹線経由で約70分、沼津駅から徒歩3分の好アクセス。</p>
+
+    <div class="stats">
+      <div class="stat"><b>2014</b><small>グランドオープン</small></div>
+      <div class="stat"><b>1,100</b><small>シアター最大収容（ホールA）</small></div>
+      <div class="stat"><b>3,875㎡</b><small>多目的ホール面積</small></div>
+      <div class="stat"><b>150室</b><small>直結ホテル</small></div>
+    </div>
+    <p class="lead" style="margin-top:20px">富士山を望める立地で、ソフト・ハードが一体となった利便性の高い「コンパクト・オールインワン」なMICE開催を可能とします。会議場施設「コンベンションぬまづ」と展示イベント施設「キラメッセぬまづ」の2つの顔を持ち、国際会議・学術会議・展示会・式典・パーティーなど多種多様な催事に対応しています。</p>
+  </section>
+
+  <!-- Facility -->
+  <section id="facility">
+    <div class="sec-head"><span class="num">03</span><h2>施設紹介</h2></div>
+
+    <h3 style="color:var(--green);font-size:18px;margin:0 0 14px">会議場施設｜コンベンションぬまづ</h3>
+    <div class="cards">
+      <div class="card">
+        <h3>コンベンションホールA</h3>
+        <div class="cname">コンベンションぬまづ</div>
+        <span class="kpi">931㎡</span><span class="kpi">シアター1,000名</span><span class="kpi">スクール690名</span>
+        <ul style="margin-top:10px"><li>天井高 7.5m</li><li>1/2面分割利用可</li></ul>
+      </div>
+      <div class="card">
+        <h3>コンベンションホールB</h3>
+        <div class="cname">コンベンションぬまづ</div>
+        <span class="kpi">451㎡</span><span class="kpi">シアター400名</span><span class="kpi">スクール252名</span>
+        <ul style="margin-top:10px"><li>天井高 7.5m</li><li>静岡県産材の木の空間</li></ul>
+      </div>
+      <div class="card">
+        <h3>中・小会議室</h3>
+        <div class="cname">コンベンションぬまづ</div>
+        <ul>
+          <li><b>301・302</b> 連結286㎡／シアター270名</li>
+          <li><b>401・402・407</b> 141～149㎡</li>
+          <li><b>小会議室7室</b> 61～66㎡（シアター48名）</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="color:var(--green);font-size:18px;margin:28px 0 14px">展示イベント施設｜キラメッセぬまづ</h3>
+    <div class="cards">
+      <div class="card">
+        <h3>多目的ホール</h3>
+        <div class="cname">キラメッセぬまづ</div>
+        <span class="kpi">3,875㎡</span><span class="kpi">シアター4,620名</span><span class="kpi">スクール3,672名</span>
+        <ul style="margin-top:10px"><li>天井高 12.6m（約40m×90m）</li><li>1/3・2/3分割可、床荷重5t/㎡</li><li>大型トラックが直接搬入可能</li></ul>
+      </div>
+      <div class="card">
+        <h3>市民ギャラリー</h3>
+        <div class="cname">キラメッセぬまづ</div>
+        <span class="kpi">576㎡</span><span class="kpi">3分割可</span>
+        <ul style="margin-top:10px"><li>天井高 5.0m</li><li>絵画・書道・展示会にも</li></ul>
+      </div>
+      <div class="card">
+        <h3>ホテル・その他</h3>
+        <div class="cname">施設一体運営</div>
+        <ul>
+          <li><b>ダイワロイネットホテル</b> 150室（宿泊一体）</li>
+          <li>市民サロン 153㎡</li>
+          <li>屋上庭園（ふじのくに千本松フォーラム）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Access -->
+  <section id="access">
+    <div class="sec-head"><span class="num">04</span><h2>アクセス</h2></div>
+    <div class="access">
+      <div class="info">
+        <dl>
+          <dt>所在地</dt><dd>〒410-0801 静岡県沼津市大手町1-1-4</dd>
+          <dt>アクセス</dt><dd>JR沼津駅 北口から徒歩3分<br>東京駅から新幹線経由で約70分</dd>
+          <dt>お問い合わせ</dt><dd>TEL：055-920-4100<br>FAX：055-920-4101<br>MAIL：info@plazaverde.jp</dd>
+          <dt>開館時間</dt><dd>9:00〜22:00（無休）</dd>
+        </dl>
+        <p style="margin-top:18px">
+          <a class="hero-cta" style="display:inline-flex" href="https://www.plazaverde.jp" target="_blank" rel="noopener">
+            <span class="primary" style="background:var(--green);color:#fff;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.15)">公式サイトへ</span>
+          </a>
+        </p>
+      </div>
+      <div class="map">
+        <iframe class="map-embed"
+          src="https://www.google.com/maps?q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E6%B2%BC%E6%B4%A5%E5%B8%82%E5%A4%A7%E6%89%8B%E7%94%BA1-1-4&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <h2>会議・展示・宿泊をすべてひとつの場所で</h2>
+    <p>プラサ ヴェルデで、あなたのビジネスやイベントを。</p>
+    <a class="btn" href="https://www.plazaverde.jp" target="_blank" rel="noopener">公式サイトで詳しく見る</a>
+    <a class="btn" href="https://www.plazaverde.jp/visiter/facilitie_guide/" target="_blank" rel="noopener">フロアガイド</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="official">
+    公式サイト：<a href="https://www.plazaverde.jp" target="_blank" rel="noopener">www.plazaverde.jp</a>｜
+    <a href="https://www.pref.shizuoka.jp/kensei/shisetsu/bunka/1008865.html" target="_blank" rel="noopener">静岡県公式ページ</a>
+  </div>
+  <p>&copy; プラサ ヴェルデ紹介ページ（非公式）</p>
+  <p class="disclaimer">※ 本ページはプラサ ヴェルデの紹介のために作成された非公式のダミーサイトです。掲載している動画・施設情報は各種公式サイト・公開情報に基づきます。正確な最新情報は公式サイトをご確認ください。</p>
+</footer>
+
+</body>
+</html>
